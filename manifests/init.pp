@@ -172,6 +172,9 @@ class java (
       extract_command     => 'rsync',
       postextract_command => $java::oracle_postextract_command,
    }
+
+   $real_package = $java::oracle_package
+
   } else {
     $real_package = $java::package ? {
       ''       => $java::package_provider ? {
@@ -206,7 +209,7 @@ class java (
     mode    => $java::config_file_mode,
     owner   => $java::config_file_owner,
     group   => $java::config_file_group,
-    require => Package[$java::package],
+    require => Package[$java::real_package],
     source  => $java::manage_file_source,
     content => $java::manage_file_content,
     replace => $java::manage_file_replace,
@@ -219,7 +222,7 @@ class java (
     file { 'java.dir':
       ensure  => directory,
       path    => $java::config_dir,
-      require => Package[$java::package],
+      require => Package[$java::real_package],
       source  => $java::source_dir,
       recurse => true,
       purge   => $java::bool_source_dir_purge,
