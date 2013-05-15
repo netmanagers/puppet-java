@@ -5,9 +5,9 @@ It provides only package installation and file configuration.
 
 Based on Example42 layouts by Alessandro Franceschi / Lab42
 
-Official site: http://www.example42.com
+Official site: http://www.netmanagers.com.ar
 
-Official git repository: http://github.com/example42/puppet-java
+Official git repository: http://github.com/netmanagers/puppet-java
 
 Released under the terms of Apache 2 License.
 
@@ -75,4 +75,4 @@ This module requires the presence of Example42 Puppi module in your modulepath.
 
 
 ## TESTING
-[![Build Status](https://travis-ci.org/example42/puppet-java.png?branch=master)](https://travis-ci.org/example42/puppet-java)
+[![Build Status](https://travis-ci.org/netmanagers/puppet-java.png?branch=master)](https://travis-ci.org/netmanagers/puppet-java)
