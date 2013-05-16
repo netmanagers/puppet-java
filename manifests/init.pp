@@ -68,8 +68,7 @@ class java (
   $oracle_repo_url            = params_lookup( 'oracle_repo_url' ),
   $oracle_package             = params_lookup( 'oracle_package' ),
   $oracle_destination_dir     = params_lookup( 'oracle_destination_dir' ),
-  $oracle_extracted_dir       = params_lookup( 'oracle_extracted_dir' ),
-  $oracle_postextract_command = params_lookup( 'oracle_postextract_command' )
+  $oracle_extract_command     = params_lookup( 'oracle_extract_command' )
   ) inherits java::params {
 
   $bool_absent=any2bool($absent)
@@ -87,12 +86,12 @@ class java (
  
   if $java::package_provider == 'oracle' {
     puppi::netinstall { 'netinstall_oracle_java':
-      url                 => "${java::oracle_repo_url}/${java::oracle_package}",
-      destination_dir     => $java::oracle_destination_dir,
-      extracted_dir       => $java::oracle_extracted_dir,
-      extract_command     => 'rsync',
-      postextract_command => $java::oracle_postextract_command,
-   }
+      url             => "${java::oracle_repo_url}/${java::oracle_package}",
+      destination_dir => $java::oracle_destination_dir,
+      extracted_dir   => $java::oracle_extracted_dir,
+      extract_command => $java::oracle_extract_command,
+
+    }
 
    $real_package = $java::oracle_package
 
