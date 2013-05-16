@@ -28,12 +28,13 @@ describe 'java' do
   end
 
   describe 'Test installation - Oracle ' do
-    let(:params) { {:package_provider => 'oracle',
-                    :oracle_package   => 'jre-7u21-linux-x64.rpm',
-                    :oracle_repo_url  => 'http://www.example.com/java'} }
+    let(:params) { {:package_provider     => 'oracle',
+                    :oracle_package       => 'jre-7u21-linux-x64.rpm',
+                    :oracle_extracted_dir => '/usr/lib/jvm/j2re1.7-oracle',
+                    :oracle_repo_url      => 'http://www.example.com/java'} }
     it { should contain_puppi__netinstall('netinstall_oracle_java').with_url('http://www.example.com/java/jre-7u21-linux-x64.rpm')}
     it { should contain_puppi__netinstall('netinstall_oracle_java').with_extract_command('dpkg -i') }
-    it { should contain_puppi__netinstall('netinstall_oracle_java').with_postextract_command('touch /var/tmp/jre-7u21-linux-x64.rpm_installed') }
+    it { should contain_puppi__netinstall('netinstall_oracle_java').with_extracted_dir('/usr/lib/jvm/j2re1.7-oracle') }
   end
 
   describe 'Test decommissioning - absent' do

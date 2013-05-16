@@ -89,12 +89,9 @@ class java (
     puppi::netinstall { 'netinstall_oracle_java':
       url                 => "${java::oracle_repo_url}/${java::oracle_package}",
       destination_dir     => $java::oracle_destination_dir,
-      extracted_dir       => "/var/tmp/${java::oracle_package}_installed",
+      extracted_dir       => $java::oracle_extracted_dir,
       extract_command     => $java::oracle_extract_command,
-      postextract_command => "touch /var/tmp/${java::oracle_package}_installed",
     }
-
-   $real_package = $java::oracle_package
 
   } else {
     $real_package = $java::package ? {
