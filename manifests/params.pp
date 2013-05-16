@@ -29,6 +29,7 @@ class java::params {
   $oracle_repo_url = ''
   $oracle_package = ''
   $oracle_destination_dir = '/tmp'
+  $oracle_extracted_dir = ''
   $oracle_extract_command = $::operatingsystem ? {
     /(?i:RedHat|Centos|Fedora|Scientific|Amazon|Linux)/ => 'rpm -i',
     /(?i:Ubuntu|Debian|Mint)/                           => 'dpkg -i',

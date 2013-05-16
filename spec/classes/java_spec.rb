@@ -32,7 +32,7 @@ describe 'java' do
                     :oracle_package   => 'jre-7u21-linux-x64.rpm',
                     :oracle_repo_url  => 'http://www.example.com/java'} }
     it { should contain_puppi__netinstall('netinstall_oracle_java').with_url('http://www.example.com/java/jre-7u21-linux-x64.rpm')}
-    it { should contain_puppi__netinstall('netinstall_oracle_java').with_extract_command('dpkg -i') }
+    it { should contain_puppi__netinstall('netinstall_oracle_java').with_extract_command('dpkg -i && touch /var/tmp/jre-7u21-linux-x64.rpm_installed') }
   end
 
   describe 'Test decommissioning - absent' do
