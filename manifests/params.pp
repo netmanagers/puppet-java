@@ -35,35 +35,9 @@ class java::params {
     /(?i:Ubuntu|Debian|Mint)/                           => 'dpkg -i',
   }
 
-  $config_dir = $::operatingsystem ? {
-    default => '/etc/java',
-  }
-
-  $config_file = $::operatingsystem ? {
-    default => '/etc/java/jvm.cfg',
-  }
-
-  $config_file_mode = $::operatingsystem ? {
-    default => '0644',
-  }
-
-  $config_file_owner = $::operatingsystem ? {
-    default => 'root',
-  }
-
-  $config_file_group = $::operatingsystem ? {
-    default => 'root',
-  }
-
   # General Settings
   $my_class = ''
-  $source = ''
-  $source_dir = ''
-  $source_dir_purge = false
-  $template = ''
   $version = 'present'
-  $options = ''
   $absent = false
-  $audit_only = false
   $noops = false
 }
