@@ -30,10 +30,12 @@ describe 'java' do
   describe 'Test installation - Oracle ' do
     let(:params) { {:package_provider     => 'oracle',
                     :oracle_package       => 'jre-7u21-linux-x64.rpm',
+                    :oracle_exec_env      => 'some_var=some_value',
                     :oracle_extracted_dir => '/usr/lib/jvm/j2re1.7-oracle',
                     :oracle_repo_url      => 'http://www.example.com/java'} }
     it { should contain_puppi__netinstall('netinstall_oracle_java').with_url('http://www.example.com/java/jre-7u21-linux-x64.rpm')}
     it { should contain_puppi__netinstall('netinstall_oracle_java').with_extract_command('dpkg -i') }
+    it { should contain_puppi__netinstall('netinstall_oracle_java').with_exec_env('some_var=some_value') }
     it { should contain_puppi__netinstall('netinstall_oracle_java').with_extracted_dir('/usr/lib/jvm/j2re1.7-oracle') }
   end
 

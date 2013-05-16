@@ -28,6 +28,7 @@ class java::params {
   # FIXME!
   $oracle_repo_url = ''
   $oracle_package = ''
+  $oracle_exec_env = ''
   $oracle_destination_dir = ''
   $oracle_extract_command = $::operatingsystem ? {
     /(?i:RedHat|Centos|Fedora|Scientific|Amazon|Linux)/ => 'rpm -i',

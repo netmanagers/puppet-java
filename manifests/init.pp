@@ -67,6 +67,7 @@ class java (
   $package_flavor             = params_lookup( 'package_flavor' ),
   $oracle_repo_url            = params_lookup( 'oracle_repo_url' ),
   $oracle_package             = params_lookup( 'oracle_package' ),
+  $oracle_exec_env            = params_lookup( 'oracle_exec_env' ),
   $oracle_destination_dir     = params_lookup( 'oracle_destination_dir' ),
   $oracle_extracted_dir       = params_lookup( 'oracle_extracted_dir' ),
   $oracle_extract_command     = params_lookup( 'oracle_extract_command' )
@@ -87,10 +88,11 @@ class java (
  
   if $java::package_provider == 'oracle' {
     puppi::netinstall { 'netinstall_oracle_java':
-      url                 => "${java::oracle_repo_url}/${java::oracle_package}",
-      destination_dir     => $java::oracle_destination_dir,
-      extracted_dir       => $java::oracle_extracted_dir,
-      extract_command     => $java::oracle_extract_command,
+      url             => "${java::oracle_repo_url}/${java::oracle_package}",
+      destination_dir => $java::oracle_destination_dir,
+      extracted_dir   => $java::oracle_extracted_dir,
+      exec_env        => $java::oracle_exec_env,
+      extract_command => $java::oracle_extract_command,
     }
 
   } else {
