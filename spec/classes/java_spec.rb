@@ -46,7 +46,7 @@ describe 'java' do
                     :oracle_repo_url      => 'http://www.example.com/java'} }
     it { should contain_puppi__netinstall('netinstall_oracle_java').with_url('http://www.example.com/java/jre-7u21-linux-x64.rpm')}
     it { should contain_puppi__netinstall('netinstall_oracle_java').with_extract_command('dpkg -i') }
-    it { should contain_puppi__netinstall('netinstall_oracle_java').with_exec_env('[]') }
+    it { should contain_puppi__netinstall('netinstall_oracle_java').with_exec_env([]) }
   end
 
   describe 'Test decommissioning - absent' do
