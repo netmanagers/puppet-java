@@ -27,7 +27,7 @@ describe 'java' do
     it { should contain_package('openjdk-3-jre-headless').with_ensure('1.0.42') }
   end
 
-  describe 'Test installation - Oracle ' do
+  describe 'Test installation - Oracle - With env' do
     let(:params) { {:package_provider     => 'oracle',
                     :oracle_package       => 'jre-7u21-linux-x64.rpm',
                     :oracle_exec_env      => 'some_var=some_value',
@@ -37,6 +37,16 @@ describe 'java' do
     it { should contain_puppi__netinstall('netinstall_oracle_java').with_extract_command('dpkg -i') }
     it { should contain_puppi__netinstall('netinstall_oracle_java').with_exec_env('some_var=some_value') }
     it { should contain_puppi__netinstall('netinstall_oracle_java').with_extracted_dir('/usr/lib/jvm/j2re1.7-oracle') }
+  end
+
+  describe 'Test installation - Oracle - No env' do
+    let(:params) { {:package_provider     => 'oracle',
+                    :oracle_package       => 'jre-7u21-linux-x64.rpm',
+                    :oracle_exec_env      => '',
+                    :oracle_repo_url      => 'http://www.example.com/java'} }
+    it { should contain_puppi__netinstall('netinstall_oracle_java').with_url('http://www.example.com/java/jre-7u21-linux-x64.rpm')}
+    it { should contain_puppi__netinstall('netinstall_oracle_java').with_extract_command('dpkg -i') }
+    it { should contain_puppi__netinstall('netinstall_oracle_java').with_exec_env('[]') }
   end
 
   describe 'Test decommissioning - absent' do
