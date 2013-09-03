@@ -1,5 +1,5 @@
 name    'netmanagers-java'
-version '1.0.0'
+version '1.0.1'
 author  'Javier Bertoli'
 license 'Apache2'
 project_page 'http://www.netmanagers.com.ar'
